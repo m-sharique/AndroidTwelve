@@ -7,13 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:layout_width="328dp"
+        android:layout_height="327dp"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editTextDistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter distance in kilometers"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/buttonConvertDistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="convertDistance"
+            android:text="Convert to Miles" />
+
+        <TextView
+            android:id="@+id/textViewDistanceResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Distance Result" />
+
+        <EditText
+            android:id="@+id/editTextCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter amount in USD"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/buttonConvertCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Convert to EUR" />
+
+        <TextView
+            android:id="@+id/textViewCurrencyResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Currency Result" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
