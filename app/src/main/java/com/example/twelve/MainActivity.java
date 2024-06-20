@@ -1,5 +1,6 @@
 package com.example.twelve;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText editTextCurrency;
     private TextView textViewCurrencyResult;
-    private Button buttonConvertCurrency;
+    private Button buttonConvertCurrency, nextPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +48,24 @@ public class MainActivity extends AppCompatActivity {
                 convertCurrency();
             }
         });
+
+        nextPage = findViewById(R.id.next);
+        nextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DbActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // Method referenced in XML using android:onClick
     public void convertDistance(View view) {
         String distanceStr = editTextDistance.getText().toString();
         if (!distanceStr.isEmpty()) {
-            double kilometers = Double.parseDouble(distanceStr);
-            double miles = kilometers * 0.621371;
-            textViewDistanceResult.setText(String.format("%.2f miles", miles));
+            double meters = Double.parseDouble(distanceStr);
+            double kilom = meters / 1000;
+            textViewDistanceResult.setText(String.format("%.2f Kilometer", kilom));
         } else {
             textViewDistanceResult.setText("Please enter a value");
         }
@@ -65,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
     private void convertCurrency() {
         String currencyStr = editTextCurrency.getText().toString();
         if (!currencyStr.isEmpty()) {
-            double usd = Double.parseDouble(currencyStr);
-            double eur = usd * 0.85; // Example conversion rate
-            textViewCurrencyResult.setText(String.format("%.2f EUR", eur));
+            double inr = Double.parseDouble(currencyStr);
+            double usd = inr * 0.012; // Example conversion rate
+            textViewCurrencyResult.setText(String.format("%.2f USD", usd));
         } else {
             textViewCurrencyResult.setText("Please enter a value");
         }
